@@ -34,6 +34,37 @@ function animateBars(){
 }
 
 
+function activeScroll(selector){
+    var button = document.querySelector(selector);
+    button.addEventListener('click', function(event){
+        event.preventDefault();
+        var page = document.querySelector('html');
+        var origin = Math.max(page.scrollTop);
+        console.log(origin);
+        var dest = document.querySelector(this.attributes.href.value).offsetTop;
+        console.log(dest);
+        var counter = 0;
+
+        var animation = setInterval(function(){
+            counter++;
+            page.scrollTop = origin + (dest * counter * 0.1)
+            console.log(origin + (dest * counter * 0.1))
+        }, 50);
+
+        setTimeout(function(){
+            clearInterval(animation);
+        }, 500);
+    });
+}
+
+activeScroll('a[href*=menu]');
+activeScroll('a[href*=mapa]');
+activeScroll('a[href*=contacto]');
+
+
+
+
+
 
 
 
